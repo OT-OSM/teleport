@@ -1,9 +1,9 @@
 ---
 - name: Install Teleport
-  import_tasks: install.yml
+  include_tasks: install.yml
 
 - name: Configure Teleport
-  import_tasks: config.yml
+  include_tasks: config.yml
 
 - name: Setup Teleport systemd service
-  import_tasks: service.yml
+  include_tasks: service.yml
