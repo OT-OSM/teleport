@@ -13,4 +13,4 @@
 - name: Enable teleport service at boot
   ansible.builtin.systemd:
     name: teleport
-    enabled: yes
+    enabled: true
