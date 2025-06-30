@@ -9,7 +9,7 @@
 
 - name: Create teleport certificate file from template
   template:
-    src: teleport.crt.j2
+    src: teleport.crt
     dest: "{{ teleport_cert_file }}"
     owner: root
     group: root
@@ -17,7 +17,7 @@
 
 - name: Create teleport key file from template
   template:
-    src: teleport.key.j2
+    src: teleport.key
     dest: "{{ teleport_key_file }}"
     owner: root
     group: root
