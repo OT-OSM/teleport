@@ -1,9 +1,9 @@
 ---
 - name: Install Teleport
-  include_tasks: install.yml
+  ansible.builtin.include_tasks: install.yml
 
 - name: Configure Teleport
-  include_tasks: config.yml
+  ansible.builtin.include_tasks: config.yml
 
 - name: Setup Teleport systemd service
-  include_tasks: service.yml
+  ansible.builtin.include_tasks: service.yml
