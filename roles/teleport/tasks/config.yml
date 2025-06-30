@@ -7,23 +7,23 @@
     group: root
     mode: '0755'
 
-- name: Create teleport certificate file from template
-  template:
+- name: Copy teleport certificate
+  copy:
     src: teleport.crt
     dest: "{{ teleport_cert_file }}"
-    owner: root
-    group: root
+    owner: teleport
+    group: teleport
     mode: '0644'
 
-- name: Create teleport key file from template
-  template:
+- name: Copy teleport key
+  copy:
     src: teleport.key
     dest: "{{ teleport_key_file }}"
-    owner: root
-    group: root
+    owner: teleport
+    group: teleport
     mode: '0600'
 
-- name: Deploy updated teleport.yaml
+- name: Deploy teleport.yaml config
   template:
     src: teleport.yaml.j2
     dest: "{{ teleport_config_file }}"
