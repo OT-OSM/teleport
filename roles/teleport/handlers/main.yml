@@ -1,9 +1,10 @@
 ---
 - name: Reload systemd
-  command: systemctl daemon-reexec
+  ansible.builtin.command: systemctl daemon-reexec
 
 - name: Restart Teleport
   ansible.builtin.systemd:
     name: teleport
     state: restarted
     enabled: true
+
