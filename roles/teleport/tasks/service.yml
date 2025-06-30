@@ -1,0 +1,16 @@
+---
+- name: Deploy teleport systemd service unit file
+  template:
+    src: teleport.service.j2
+    dest: "{{ teleport_service_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Reload systemd
+    - Restart Teleport
+
+- name: Enable teleport service at boot
+  systemd:
+    name: teleport
+    enabled: yes
