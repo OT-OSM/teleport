@@ -1,6 +1,6 @@
 ---
 - name: Ensure /etc/teleport directory exists
-  file:
+  ansible.builtin.file:
     path: /etc/teleport
     state: directory
     owner: root
@@ -8,7 +8,7 @@
     mode: '0755'
 
 - name: Copy teleport certificate
-  copy:
+  ansible.builtin.copy:
     src: teleport.crt
     dest: "{{ teleport_cert_file }}"
     owner: teleport
@@ -16,7 +16,7 @@
     mode: '0644'
 
 - name: Copy teleport key
-  copy:
+  ansible.builtin.copy:
     src: teleport.key
     dest: "{{ teleport_key_file }}"
     owner: teleport
@@ -24,7 +24,7 @@
     mode: '0600'
 
 - name: Deploy teleport.yaml config
-  template:
+  ansible.builtin.template:
     src: teleport.yaml.j2
     dest: "{{ teleport_config_file }}"
     owner: root
