@@ -10,3 +10,7 @@
     --cluster-name={{ teleport_cluster_name }}
   args:
     creates: "{{ teleport_config_file }}"
+
+- name: Print success message
+  ansible.builtin.debug:
+    msg: "Teleport installed successfully!"
