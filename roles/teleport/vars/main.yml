@@ -1,8 +1,0 @@
----
-teleport_email: "kondapratiwarpritam855@gmail.com"
-teleport_cluster_name: "teleport.opstree.net"
-teleport_nodename: "ldc-opstree"
-teleport_data_dir: "/var/lib/teleport"
-teleport_cert_file: "/etc/teleport/teleport.crt"
-teleport_key_file: "/etc/teleport/teleport.key"
-teleport_config_file: "/etc/teleport.yaml"
