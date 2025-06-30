@@ -6,4 +6,4 @@
   systemd:
     name: teleport
     state: restarted
-    enabled: yes
+    enabled: true
