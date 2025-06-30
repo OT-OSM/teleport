@@ -1,7 +1,18 @@
 ---
-- name: Install Teleport binary
+- name: Download Teleport install script
+  ansible.builtin.get_url:
+    url: https://cdn.teleport.dev/install.sh
+    dest: /tmp/teleport_install.sh
+    mode: '0755'
+
+- name: Run Teleport install script
   ansible.builtin.shell: |
-    curl https://cdn.teleport.dev/install.sh | bash -s {{ teleport_version }}
+    set -o pipefail
+    bash /tmp/teleport_install.sh -s {{ teleport_version }}
+  args:
+    creates: /usr/local/bin/teleport
+  register: teleport_install_result
+  changed_when: "'Teleport has been installed' in teleport_install_result.stdout"
 
 - name: Generate initial teleport.yaml
   ansible.builtin.shell: >
@@ -10,3 +21,5 @@
     --cluster-name={{ teleport_cluster_name }}
   args:
     creates: "{{ teleport_config_file }}"
+  register: teleport_config_result
+  changed_when: teleport_config_result.rc == 0
