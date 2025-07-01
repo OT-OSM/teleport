@@ -55,6 +55,11 @@ Teleport is an open-source access management tool that provides secure, identity
 
 #### For Teleport
 ```
+├── defaults
+│   └── main.yml
+├── files
+│   ├── teleport.crt
+│   └── teleport.key
 ├── handlers
 │   └── main.yml
 ├── meta
@@ -66,8 +71,6 @@ Teleport is an open-source access management tool that provides secure, identity
 │   ├── main.yml
 │   └── service.yml
 ├── templates
-│   ├── teleport.crt.j2
-│   ├── teleport.key.j2
 │   ├── teleport.service.j2
 │   └── teleport.yaml.j2
 └── vars
