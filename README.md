@@ -91,6 +91,8 @@ Teleport is an open-source access management tool that provides secure, identity
 | `teleport_key_file`          | `"/etc/teleport/teleport.key"`         | Path to the private key corresponding to the TLS certificate.                  |
 | `teleport_config_file`       | `"/etc/teleport.yaml"`                 | Path to the main Teleport configuration file.                                  |
 | `teleport_service_file`      | `"/etc/systemd/system/teleport.service"` | Path to the systemd service file for managing the Teleport service.           |
+| `teleport_cert_file_name ` | `"files/teleport.crt"` | path of cert file.
+| `teleport_key_file_name ` | `"files/teleport.key"` | path of key file.
 
 
 ## Inventory
