@@ -9,7 +9,7 @@
 
 - name: Copy teleport certificate
   ansible.builtin.copy:
-    src: teleport.crt
+    src: "{{ teleport_cert_src_file}}"
     dest: "{{ teleport_cert_file }}"
     owner: root
     group: root
@@ -17,7 +17,7 @@
 
 - name: Copy teleport key
   ansible.builtin.copy:
-    src: teleport.key
+    src: "{{ teleport_key_src_file }}"
     dest: "{{ teleport_key_file }}"
     owner: root
     group: root
