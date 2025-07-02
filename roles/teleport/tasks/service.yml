@@ -1,6 +1,6 @@
 ---
 - name: Deploy teleport systemd service unit file
-  ansible.builtin.template:
+  template:
     src: teleport.service.j2
     dest: "{{ teleport_service_file }}"
     owner: root
@@ -11,6 +11,6 @@
     - Restart Teleport
 
 - name: Enable teleport service at boot
-  ansible.builtin.systemd:
+  systemd:
     name: teleport
-    enabled: true
+    enabled: yes
