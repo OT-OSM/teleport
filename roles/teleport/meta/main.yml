@@ -1,6 +1,0 @@
-galaxy_info:
-  role_name: teleport
-  namespace: pritam
-  author: pritam
-  description: Teleport installation and configuration
-  min_ansible_version: 2.9
