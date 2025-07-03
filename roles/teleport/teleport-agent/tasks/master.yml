@@ -1,0 +1,32 @@
+---
+- name: Download Teleport archive
+  get_url:
+    url: "{{ teleport_archive_url }}"
+    dest: "{{ teleport_archive_path }}"
+
+- name: Extract Teleport archive
+  unarchive:
+    src: "{{ teleport_archive_path }}"
+    dest: "{{ teleport_install_dir }}"
+    remote_src: yes
+
+- name: Install Teleport binaries
+  command: "{{ teleport_bin_install_cmd }}"
+  args:
+    chdir: "{{ teleport_extract_dir }}"
+
+- name: Generate node token
+  command: "tctl tokens add --type=node --format=text"
+  register: token_output
+
+- name: Write token to file
+  copy:
+    content: "{{ token_output.stdout }}"
+    dest: "{{ teleport_install_dir }}/token.file"
+    mode: "0600"
+
+- name: Fetch token file from teleport_master to controller
+  fetch:
+    src: "{{ teleport_install_dir }}/token.file"
+    dest: /tmp/token.file
+    flat: yes
