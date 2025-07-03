@@ -1,9 +1,0 @@
----
-- name: Reload systemd
-  command: systemctl daemon-reexec
-
-- name: Restart Teleport
-  systemd:
-    name: teleport
-    state: restarted
-    enabled: yes
