@@ -1,0 +1,11 @@
+---
+teleport_version: "17.5.3"
+teleport_user: "pritampratiwar"
+teleport_install_dir: "/home/{{ teleport_user }}"
+teleport_archive_url: "https://cdn.teleport.dev/teleport-v{{ teleport_version }}-linux-amd64-bin.tar.gz"
+teleport_archive_path: "{{ teleport_install_dir }}/teleport-v{{ teleport_version }}-linux-amd64-bin.tar.gz"
+teleport_proxy: "teleport.opstree.dev:443"
+token_path: "/home/pritam/token.file"
+teleport_extract_dir: "{{ teleport_install_dir }}/teleport"
+teleport_bin_install_cmd: "./install"
+teleport_config_path: "/etc/teleport.yaml"
