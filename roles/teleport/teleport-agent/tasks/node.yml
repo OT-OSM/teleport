@@ -1,0 +1,22 @@
+---
+- name: Copy token file from controller to teleport node
+  copy:
+    src: /tmp/token.file
+    dest: "{{ token_path }}"
+
+- name: Run teleport node install script
+  shell: "curl -fsSL https://{{ teleport_proxy }}/scripts/install.sh | bash"
+
+- name: Generate /etc/teleport.yaml using teleport node configure
+  command: >
+    teleport node configure
+    --output={{ teleport_config_path }}
+    --token={{ token_path }}
+    --proxy={{ teleport_proxy }}
+
+- name: Enable and start teleport service
+  systemd:
+    name: teleport
+    enabled: true
+    state: started
+  notify: Restart Teleport
