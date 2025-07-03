@@ -1,5 +1,0 @@
----
-- name: Restart Teleport
-  systemd:
-    name: teleport
-    state: restarted
