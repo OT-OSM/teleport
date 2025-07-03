@@ -1,0 +1,5 @@
+---
+- hosts: teleport
+  become: true
+  roles:
+    - roles/teleport

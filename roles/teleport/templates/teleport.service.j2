@@ -1,0 +1,13 @@
+[Unit]
+Description=Teleport SSH Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/teleport start --config={{ teleport_config_file }}
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
