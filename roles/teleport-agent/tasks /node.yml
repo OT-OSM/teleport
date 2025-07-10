@@ -1,8 +1,11 @@
 ---
-- name: Copy token file from controller to teleport node
+- name: Create token file with teleport token
   ansible.builtin.copy:
-    src: /tmp/token.file
     dest: "{{ token_path }}"
+    content: "{{ content }}"
+    owner: root
+    group: root
+    mode: '0600'
 
 - name: Run teleport node install script
   ansible.builtin.shell: "curl -fsSL https://{{ teleport_proxy }}/scripts/install.sh | bash"
@@ -20,3 +23,4 @@
     enabled: true
     state: started
   notify: Restart Teleport
+
