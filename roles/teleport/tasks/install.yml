@@ -1,9 +1,9 @@
 ---
 - name: Install teleport binary
-  shell: curl https://cdn.teleport.dev/install.sh | bash -s {{ teleport_version }}
+  ansible.builtin.shell: curl https://cdn.teleport.dev/install.sh | bash -s {{ teleport_version }}
 
 - name: Generate initial teleport.yaml
-  shell: >
+  ansible.builtin.shell: >
     teleport configure -o file
     --acme --acme-email={{ teleport_email }}
     --cluster-name={{ teleport_cluster_name }}
