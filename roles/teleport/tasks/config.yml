@@ -1,0 +1,34 @@
+---
+- name: Ensure /etc/teleport directory exists
+  ansible.builtin.file:
+    path: /etc/teleport
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Create teleport certificate file from template
+  template:
+    src: teleport.crt.j2
+    dest: "{{ teleport_cert_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Create teleport key file from template
+  template:
+    src: teleport.key.j2
+    dest: "{{ teleport_key_file }}"
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: Deploy updated teleport.yaml
+  template:
+    src: teleport.yaml.j2
+    dest: "{{ teleport_config_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Restart Teleport

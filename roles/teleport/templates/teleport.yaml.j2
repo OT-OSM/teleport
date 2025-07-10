@@ -1,0 +1,34 @@
+version: v3
+teleport:
+  nodename: {{ teleport_nodename }}
+  data_dir: {{ teleport_data_dir }}
+  join_params:
+    token_name: ""
+    method: token
+  log:
+    output: stderr
+    severity: INFO
+    format:
+      output: text
+  ca_pin: ""
+  diag_addr: ""
+
+auth_service:
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3025
+  cluster_name: {{ teleport_cluster_name }}
+  proxy_listener_mode: multiplex
+
+ssh_service:
+  enabled: "yes"
+
+proxy_service:
+  enabled: "yes"
+  web_listen_addr: 0.0.0.0:443
+  public_addr: {{ teleport_cluster_name }}:443
+  https_keypairs:
+    - cert_file: {{ teleport_cert_file }}
+      key_file: {{ teleport_key_file }}
+  https_keypairs_reload_interval: 0s
+  acme:
+    enabled: "no"
