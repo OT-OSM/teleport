@@ -1,0 +1,6 @@
+---
+teleport_proxy: "teleport.opstree.dev:443"  
+token_path: "/opt/token.file" 
+teleport_config_path: "/etc/teleport.yaml"
+content: "22f17675f040af5a9f6581f07c843e77" 
+

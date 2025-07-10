@@ -1,0 +1,4 @@
+---
+- name: Run tasks on Teleport nodes
+  include_tasks: node.yml
+
