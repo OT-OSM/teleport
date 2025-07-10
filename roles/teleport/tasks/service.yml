@@ -11,6 +11,6 @@
     - Restart Teleport
 
 - name: Enable teleport service at boot
-  systemd:
+  ansible.builtin.systemd:
     name: teleport
     enabled: yes
