@@ -1,6 +1,6 @@
 ---
 - name: Ensure /etc/teleport directory exists
-  file:
+  ansible.builtin.file:
     path: /etc/teleport
     state: directory
     owner: root
