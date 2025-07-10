@@ -1,8 +1,4 @@
 ---
-- name: Run tasks on Teleport master
-  include_tasks: master.yml
-  when: inventory_hostname == groups['teleport_master'][0]
-
 - name: Run tasks on Teleport nodes
   include_tasks: node.yml
-  when: inventory_hostname in groups['teleport_nodes']
+
